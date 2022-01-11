@@ -19,6 +19,22 @@ class User extends React.Component {
   }
 }
 
+class Followers extends React.Component {
+  render() {
+    return(
+      <div className='followers-wrapper' >
+        <h2>Followers:</h2>
+        <div className='follower-wrapper' >
+          <div className='follower-info' >
+            <img className='follower-img' src={this.props.followers[0].avatar_url}/>
+            <a target='_blank' href="">{this.props.followers[0].login}</a>
+          </div>
+        </div>
+      </div>
+    )
+  }
+}
+
 class App extends React.Component {
   state = {
     user: 'savmaxwell93',
@@ -72,15 +88,7 @@ class App extends React.Component {
           </form>
         </div>
         <User userInfo={this.state.userInfo} />
-        <div className='followers-wrapper' >
-          <h2>Followers:</h2>
-          <div className='follower-wrapper' >
-            <div className='follower-info' >
-              <img className='follower-img' src={this.state.followers[0].avatar_url}/>
-              <a target='_blank' href="">{this.state.followers[0].login}</a>
-            </div>
-          </div>
-        </div>
+        <Followers followers={this.state.followers} />
       </div>);
   }
 }
