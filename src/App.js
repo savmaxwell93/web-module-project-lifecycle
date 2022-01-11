@@ -13,7 +13,7 @@ class App extends React.Component {
   }
 
   componentDidMount(prevProps, prevState) {
-    axios.get("https://api.github.com/users/savmaxwell93")
+    axios.get(`https://api.github.com/users/${this.state.user}`)
       .then(resp => {
         this.setState({
           ...this.state,
@@ -27,7 +27,7 @@ class App extends React.Component {
 
   componentDidUpdate(prevProps, prevState) {
     if(this.state.userInfo !== prevState.userInfo) {
-      axios.get("https://api.github.com/users/savmaxwell93/followers")
+      axios.get(`https://api.github.com/users/${this.state.user}/followers`)
         .then(resp => {
           this.setState({
             ...this.state,
@@ -40,13 +40,35 @@ class App extends React.Component {
     }
   }
 
+  handleChange = (e) => {
+    this.setState({
+      ...this.state,
+      user: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    const user = this.state.user
+    axios.get(`https://api.github.com/users/${user}`)
+      .then(resp => {
+        this.setState({
+          ...this.state,
+          userInfo: resp.data,
+        })
+      })
+      .catch(err => {
+        console.error(err)
+      })
+  }
+
   render() {
     return(
       <div className='app-wrapper'>
         <h1>GITHUB INFO</h1>
         <div className='search-bar' >
-          <form>
-            <input placeholder='Github Handle' />
+          <form onSubmit={this.handleSubmit} >
+            <input onChange={this.handleChange} placeholder='Github Handle' />
             <button>Search</button>
           </form>
         </div>

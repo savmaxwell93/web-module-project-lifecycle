@@ -57,9 +57,9 @@ In this project you will build an application that allows for github user and fo
 
 #### Build search capabilities within your APP
 > *Now let's allow users to search for new github usernames*
-* [ ] Connect your form in App.js so that typing into a input updated your current user state.
-* [ ] When your form is submitted, make an api call on current user. Set the returned user data to state.
-* [ ] Ensure that followers is correctly updated.
+* [x] Connect your form in App.js so that typing into a input updated your current user state.
+* [x] When your form is submitted, make an api call on current user. Set the returned user data to state.
+* [x] Ensure that followers is correctly updated.
 
 ### Task 3: Stretch goals
 - [ ] We are making several api calls of the same type in our code. How can we make this portion more dry?
