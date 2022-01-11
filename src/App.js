@@ -1,6 +1,24 @@
 import React from 'react';
 import './index.css'
 
+class User extends React.Component {
+  render() {
+    return(
+      <div className='user-wrapper' >
+        <img className='user-img' src={this.props.userInfo.avatar_url}/>
+        <div className='info-wrapper' >
+          <a target='_blank' href="">{this.props.userInfo.name}</a>
+          <p>{this.props.userInfo.login}</p>
+          <h3>Location: {this.props.userInfo.location}</h3>
+          <h3>Total Repos: {this.props.userInfo.public_repos}</h3>
+          <h3>Following: {this.props.userInfo.following}</h3>
+          <h3>Total Followers: {this.props.userInfo.followers}</h3>
+        </div>
+      </div>
+    )
+  }
+}
+
 class App extends React.Component {
   state = {
     user: 'savmaxwell93',
@@ -53,17 +71,7 @@ class App extends React.Component {
             <button>Search</button>
           </form>
         </div>
-        <div className='user-wrapper' >
-          <img className='user-img' src={this.state.userInfo.avatar_url}/>
-          <div className='info-wrapper' >
-            <a target='_blank' href="">{this.state.userInfo.name}</a>
-            <p>{this.state.userInfo.login}</p>
-            <h3>Location: {this.state.userInfo.location}</h3>
-            <h3>Total Repos: {this.state.userInfo.public_repos}</h3>
-            <h3>Following: {this.state.userInfo.following}</h3>
-            <h3>Total Followers: {this.state.userInfo.followers}</h3>
-          </div>
-        </div>
+        <User userInfo={this.state.userInfo} />
         <div className='followers-wrapper' >
           <h2>Followers:</h2>
           <div className='follower-wrapper' >
