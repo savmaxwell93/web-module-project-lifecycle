@@ -2,6 +2,47 @@ import React from 'react';
 import './index.css'
 
 class App extends React.Component {
+  state = {
+    user: 'savmaxwell93',
+    userInfo: {
+      "login": "savmaxwell93",
+      "id": 85320713,
+      "node_id": "MDQ6VXNlcjg1MzIwNzEz",
+      "avatar_url": "https://avatars.githubusercontent.com/u/85320713?v=4",
+      "url": "https://api.github.com/users/savmaxwell93",
+      "html_url": "https://github.com/savmaxwell93",
+      "type": "User",
+      "site_admin": false,
+      "name": "Savannah Maxwell",
+      "location": "Boise, ID",
+      "public_repos": 46,
+      "followers": 32,
+      "following": 26,
+    },
+    followers: [
+      {
+        "login": "MychaelM",
+        "id": 46407553,
+        "node_id": "MDQ6VXNlcjQ2NDA3NTUz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/46407553?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MychaelM",
+        "html_url": "https://github.com/MychaelM",
+        "followers_url": "https://api.github.com/users/MychaelM/followers",
+        "following_url": "https://api.github.com/users/MychaelM/following{/other_user}",
+        "gists_url": "https://api.github.com/users/MychaelM/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/MychaelM/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/MychaelM/subscriptions",
+        "organizations_url": "https://api.github.com/users/MychaelM/orgs",
+        "repos_url": "https://api.github.com/users/MychaelM/repos",
+        "events_url": "https://api.github.com/users/MychaelM/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/MychaelM/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+    ]
+  }
+
   render() {
     return(
       <div className='app-wrapper'>
@@ -13,22 +54,22 @@ class App extends React.Component {
           </form>
         </div>
         <div className='user-wrapper' >
-          <img className='user-img' src="https://avatars.githubusercontent.com/u/85320713?v=4"/>
+          <img className='user-img' src={this.state.userInfo.avatar_url}/>
           <div className='info-wrapper' >
-            <a target='_blank' href="">Name</a>
-            <p>Username</p>
-            <h3>Total Repos:</h3>
-            <h3>Total Followers:</h3>
-            <h3>Following:</h3>
-            <h3>Location:</h3>
+            <a target='_blank' href="">{this.state.userInfo.name}</a>
+            <p>{this.state.userInfo.login}</p>
+            <h3>Location: {this.state.userInfo.location}</h3>
+            <h3>Total Repos: {this.state.userInfo.public_repos}</h3>
+            <h3>Following: {this.state.userInfo.following}</h3>
+            <h3>Total Followers: {this.state.userInfo.followers}</h3>
           </div>
         </div>
         <div className='followers-wrapper' >
           <h2>Followers:</h2>
           <div className='follower-wrapper' >
             <div className='follower-info' >
-              <img className='follower-img' src="https://avatars.githubusercontent.com/u/85320713?v=4"/>
-              <a target='_blank' href="">Username</a>
+              <img className='follower-img' src={this.state.followers[0].avatar_url}/>
+              <a target='_blank' href="">{this.state.followers[0].login}</a>
             </div>
           </div>
         </div>
