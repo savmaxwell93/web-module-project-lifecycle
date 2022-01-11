@@ -50,9 +50,9 @@ In this project you will build an application that allows for github user and fo
 
 #### Load in the user and follower on mount
 > *We can now do our api calls to get our initial data*
-* [ ] Make our user object and follower list state empty by default.
-* [ ] Keep our searched user state your github username by default.
-* [ ] Use componentDidMount to load initial user data for your github name into state.
+* [x] Make our user object and follower list state empty by default.
+* [x] Keep our searched user state your github username by default.
+* [x] Use componentDidMount to load initial user data for your github name into state.
 * [ ] Use componentDidUpdate to load follower information ***only when the user slice of state changes value. Make be careful to avoid infinite loops while building this portion.***
 
 #### Build search capabilities within your APP

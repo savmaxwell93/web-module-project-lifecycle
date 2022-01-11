@@ -1,3 +1,4 @@
+import axios from 'axios';
 import React from 'react';
 import './index.css'
 
@@ -48,83 +49,21 @@ class Follower extends React.Component {
 class App extends React.Component {
   state = {
     user: 'savmaxwell93',
-    userInfo: {
-      "login": "savmaxwell93",
-      "id": 85320713,
-      "node_id": "MDQ6VXNlcjg1MzIwNzEz",
-      "avatar_url": "https://avatars.githubusercontent.com/u/85320713?v=4",
-      "url": "https://api.github.com/users/savmaxwell93",
-      "html_url": "https://github.com/savmaxwell93",
-      "type": "User",
-      "site_admin": false,
-      "name": "Savannah Maxwell",
-      "location": "Boise, ID",
-      "public_repos": 46,
-      "followers": 32,
-      "following": 26,
-    },
-    followers: [
-      {
-        "login": "MychaelM",
-        "id": 46407553,
-        "node_id": "MDQ6VXNlcjQ2NDA3NTUz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/46407553?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/MychaelM",
-        "html_url": "https://github.com/MychaelM",
-        "followers_url": "https://api.github.com/users/MychaelM/followers",
-        "following_url": "https://api.github.com/users/MychaelM/following{/other_user}",
-        "gists_url": "https://api.github.com/users/MychaelM/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/MychaelM/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/MychaelM/subscriptions",
-        "organizations_url": "https://api.github.com/users/MychaelM/orgs",
-        "repos_url": "https://api.github.com/users/MychaelM/repos",
-        "events_url": "https://api.github.com/users/MychaelM/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/MychaelM/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      {
-        "login": "MychaelM",
-        "id": 46407553,
-        "node_id": "MDQ6VXNlcjQ2NDA3NTUz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/46407553?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/MychaelM",
-        "html_url": "https://github.com/MychaelM",
-        "followers_url": "https://api.github.com/users/MychaelM/followers",
-        "following_url": "https://api.github.com/users/MychaelM/following{/other_user}",
-        "gists_url": "https://api.github.com/users/MychaelM/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/MychaelM/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/MychaelM/subscriptions",
-        "organizations_url": "https://api.github.com/users/MychaelM/orgs",
-        "repos_url": "https://api.github.com/users/MychaelM/repos",
-        "events_url": "https://api.github.com/users/MychaelM/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/MychaelM/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-      {
-        "login": "MychaelM",
-        "id": 46407553,
-        "node_id": "MDQ6VXNlcjQ2NDA3NTUz",
-        "avatar_url": "https://avatars.githubusercontent.com/u/46407553?v=4",
-        "gravatar_id": "",
-        "url": "https://api.github.com/users/MychaelM",
-        "html_url": "https://github.com/MychaelM",
-        "followers_url": "https://api.github.com/users/MychaelM/followers",
-        "following_url": "https://api.github.com/users/MychaelM/following{/other_user}",
-        "gists_url": "https://api.github.com/users/MychaelM/gists{/gist_id}",
-        "starred_url": "https://api.github.com/users/MychaelM/starred{/owner}{/repo}",
-        "subscriptions_url": "https://api.github.com/users/MychaelM/subscriptions",
-        "organizations_url": "https://api.github.com/users/MychaelM/orgs",
-        "repos_url": "https://api.github.com/users/MychaelM/repos",
-        "events_url": "https://api.github.com/users/MychaelM/events{/privacy}",
-        "received_events_url": "https://api.github.com/users/MychaelM/received_events",
-        "type": "User",
-        "site_admin": false
-      },
-    ]
+    userInfo: {},
+    followers: []
+  }
+
+  componentDidMount() {
+    axios.get("https://api.github.com/users/savmaxwell93")
+      .then(resp => {
+        this.setState({
+          ...this.state,
+          userInfo: resp.data
+        })
+      })
+      .catch(err => {
+        console.error(err)
+      })
   }
 
   render() {
