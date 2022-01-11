@@ -53,7 +53,7 @@ class App extends React.Component {
     followers: []
   }
 
-  componentDidMount() {
+  componentDidMount(prevProps, prevState) {
     axios.get("https://api.github.com/users/savmaxwell93")
       .then(resp => {
         this.setState({
@@ -64,6 +64,21 @@ class App extends React.Component {
       .catch(err => {
         console.error(err)
       })
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(this.state.userInfo !== prevState.userInfo) {
+      axios.get("https://api.github.com/users/savmaxwell93/followers")
+        .then(resp => {
+          this.setState({
+            ...this.state,
+            followers: resp.data
+          })
+        })
+        .catch(err => {
+          console.error(err)
+        })
+    }
   }
 
   render() {

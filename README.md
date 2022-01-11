@@ -53,7 +53,7 @@ In this project you will build an application that allows for github user and fo
 * [x] Make our user object and follower list state empty by default.
 * [x] Keep our searched user state your github username by default.
 * [x] Use componentDidMount to load initial user data for your github name into state.
-* [ ] Use componentDidUpdate to load follower information ***only when the user slice of state changes value. Make be careful to avoid infinite loops while building this portion.***
+* [x] Use componentDidUpdate to load follower information ***only when the user slice of state changes value. Make be careful to avoid infinite loops while building this portion.***
 
 #### Build search capabilities within your APP
 > *Now let's allow users to search for new github usernames*
