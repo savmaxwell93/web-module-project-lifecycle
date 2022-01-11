@@ -25,11 +25,21 @@ class Followers extends React.Component {
       <div className='followers-wrapper' >
         <h2>Followers:</h2>
         <div className='follower-wrapper' >
-          <div className='follower-info' >
-            <img className='follower-img' src={this.props.followers[0].avatar_url}/>
-            <a target='_blank' href="">{this.props.followers[0].login}</a>
-          </div>
+          {this.props.followers.map(follower => {
+            return (<Follower key={follower.login} follower={follower}/>)
+          })}
         </div>
+      </div>
+    )
+  }
+}
+
+class Follower extends React.Component {
+  render () {
+    return(
+      <div className='follower-info' >
+        <img className='follower-img' src={this.props.follower.avatar_url}/>
+        <a target='_blank' href="">{this.props.follower.login}</a>
       </div>
     )
   }
@@ -54,6 +64,46 @@ class App extends React.Component {
       "following": 26,
     },
     followers: [
+      {
+        "login": "MychaelM",
+        "id": 46407553,
+        "node_id": "MDQ6VXNlcjQ2NDA3NTUz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/46407553?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MychaelM",
+        "html_url": "https://github.com/MychaelM",
+        "followers_url": "https://api.github.com/users/MychaelM/followers",
+        "following_url": "https://api.github.com/users/MychaelM/following{/other_user}",
+        "gists_url": "https://api.github.com/users/MychaelM/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/MychaelM/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/MychaelM/subscriptions",
+        "organizations_url": "https://api.github.com/users/MychaelM/orgs",
+        "repos_url": "https://api.github.com/users/MychaelM/repos",
+        "events_url": "https://api.github.com/users/MychaelM/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/MychaelM/received_events",
+        "type": "User",
+        "site_admin": false
+      },
+      {
+        "login": "MychaelM",
+        "id": 46407553,
+        "node_id": "MDQ6VXNlcjQ2NDA3NTUz",
+        "avatar_url": "https://avatars.githubusercontent.com/u/46407553?v=4",
+        "gravatar_id": "",
+        "url": "https://api.github.com/users/MychaelM",
+        "html_url": "https://github.com/MychaelM",
+        "followers_url": "https://api.github.com/users/MychaelM/followers",
+        "following_url": "https://api.github.com/users/MychaelM/following{/other_user}",
+        "gists_url": "https://api.github.com/users/MychaelM/gists{/gist_id}",
+        "starred_url": "https://api.github.com/users/MychaelM/starred{/owner}{/repo}",
+        "subscriptions_url": "https://api.github.com/users/MychaelM/subscriptions",
+        "organizations_url": "https://api.github.com/users/MychaelM/orgs",
+        "repos_url": "https://api.github.com/users/MychaelM/repos",
+        "events_url": "https://api.github.com/users/MychaelM/events{/privacy}",
+        "received_events_url": "https://api.github.com/users/MychaelM/received_events",
+        "type": "User",
+        "site_admin": false
+      },
       {
         "login": "MychaelM",
         "id": 46407553,
